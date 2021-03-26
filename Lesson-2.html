@@ -1,0 +1,151 @@
+<script type="text/javascript">
+//1. Пояснить за инкремент.
+
+	var a = 1, b = 1, c, d;
+	c = ++a; alert(c);           // 2 префисный инкремент сначала увеличивает операнд, затем  присваевает результат 
+	d = b++; alert(d);           // 1 постфиксный инкремент сначала присваивает, затем увеличивает операнд
+	c = (2+ ++a); alert(c);      // 5 префисный инкремент сначала увеличивает операнд а, затем вычисляет выражение
+	d = (2+ b++); alert(d);      // 4 постфиксный инкремент сначала вычисляет выражение, затем увеличивает b
+	alert(a);                    // 3
+	alert(b);                    // 3
+
+
+//2. Чему будет равен x в примере ниже?
+
+	var a = 2;
+	var x = 1 + (a *= 2);
+	alert(x);
+
+	//x = 5 выражение в скобках можно записать так: а = а * 2 => a = 4 а скобки задают порядок вычисления
+
+//3. Объявить две целочисленные переменные a и b и задать им произвольные начальные значения. Затем написать скрипт, который работает по следующему принципу:
+
+
+	a = +prompt("Введите целое число");
+	b = +prompt("Введите целое число");
+	if(a >= 0 && b >= 0){	//если a и b положительные, вывести их разность;
+		x = a - b;
+	}else if(a < 0 && b < 0){	//если а и b отрицательные, вывести их произведение;
+		x = a * b;
+	}else{
+		x = a + b;	//если а и b разных знаков, вывести их сумму; ноль можно считать положительным числом.
+	}
+	alert(x);
+
+
+//4. Присвоить переменной а значение в промежутке [0..15]. С помощью оператора switch организовать вывод чисел от a до 15.
+	//Дополнительно, по желанию - сделать данный пример через рекурсию
+
+	a = parseInt(Math.random() * 16 + 0);
+	 switch(a){
+	 	case 0:
+	 		console.log(0);
+	 	case 1:
+	 		console.log(1);
+	 	case 2:
+	 		console.log(2);
+	 	case 3:
+	 		console.log(3);
+	 	case 4:
+	 		console.log(4);
+	 	case 5:
+	 		console.log(5);
+	 	case 6:
+	 		console.log(6);
+	 	case 7:
+	 		console.log(7);
+	 	case 8:
+	 		console.log(8);
+	 	case 9:
+	 		console.log(9);
+	 	case 10:
+	 		console.log(10);
+	 	case 11:
+	 		console.log(11);
+	 	case 12:
+	 		console.log(12);
+	 	case 13:
+	 		console.log(13);
+	 	case 14:
+	 		console.log(14);
+	 	case 15:
+	 		console.log(15);
+	 }
+
+	serialOutput(a);
+	
+	function serialOutput(number){
+		if(number <= 15){
+			console.log(number++);
+			serialOutput(number);
+		}
+		else
+			return;
+	}
+
+//5. Реализовать основные 4 арифметические операции в виде функций с двумя параметрами. Обязательно использовать оператор return.
+
+	function addition(a,b){
+		return(a += b);
+	}
+	function subtraction(a,b){
+		return(a -= b);
+	}
+	function division(a,b){
+		return(a /= b);
+	}
+	function multiplication(a,b){
+		return(a *= b);
+	}
+
+
+//6. Реализовать функцию с тремя параметрами: function mathOperation(arg1, arg2, operation), где arg1, arg2 – значения аргументов, operation – строка с названием операции. В зависимости от переданного значения операции выполнить одну из арифметических операций (использовать функции из пункта 5) и вернуть полученное значение (использовать switch).
+
+	function mathOperation(arg1, arg2, operation){
+		switch(operation){
+			case '-': 
+				return(subtraction(arg1,arg2));
+				break;
+			case '+': 
+				return(addition(arg1,arg2));
+				break;
+			case '*': 
+				return(multiplication(arg1,arg2));
+				break;
+			case '/': 
+				return(division(arg1,arg2));
+				break;
+		}	
+	}
+
+	var numb1 = +prompt("Введите первое число:");
+	var oper = prompt("Введите математический оператор (+, -, /, *):");
+	var numb2 = +prompt("Введите второе число:");
+
+	alert("Результат: " + mathOperation(numb1,numb2,oper));
+
+//7) *Сравнить null и 0. Попробуйте объяснить результат.
+
+	null == 0	//=> false
+	null > 0	//=> true
+	null < 0	//=> true
+	null === 0	//=> false
+	null != 0	//=> true
+
+	//Null это объект, 0 это число. Логические операторы переводят операнды в логический тип данных. 0 будет false(0) null будет true(1)
+
+
+//8) *С помощью рекурсии организовать функцию возведения числа в степень. Формат: function power(val, pow), где val – заданное число, pow – степень
+
+	function power(val, pow){
+		if(pow > 1){
+			val = (val * power(val,--pow));
+		}
+		return(val);
+	}
+
+	a = prompt("Введите число: ");
+	b = prompt("Введите степень: ");
+	alert(power(a,b));
+
+</script>
