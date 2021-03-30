@@ -1,0 +1,158 @@
+<script type="text/javascript">
+
+//1. С помощью цикла while вывести все простые числа в промежутке от 0 до 100.
+	var i = 0;
+	while(i<=100){
+		var j = 0, count = 0;
+		while(j < i){
+			var a = i % j;
+			if(a == 0){
+				count++;
+			}
+			j++
+		}
+		if(count == 1) {
+			console.log(i);
+		}
+		i++;
+	}
+
+//2. С этого урока начинаем работать с функционалом интернет-магазина. Предположим, есть сущность корзины. Нужно реализовать функционал подсчета стоимости корзины в зависимости от находящихся в ней товаров.	
+
+
+//3.	Товары в корзине хранятся в массиве. Задачи:
+//		Организовать такой массив для хранения товаров в корзине;
+//		Организовать функцию countBasketPrice, которая будет считать стоимость корзины.
+	var goods = [
+		{
+			title: "Товар 1",
+			price: 100,
+			count: 2
+		},
+		{
+			title: "Товар 2",
+			price: 100,
+			count: 2
+		},
+		{
+			title: "Товар 3",
+			price: 100,
+			count: 2
+		},
+		{
+			title: "Товар 4",
+			price: 100,
+			count: 2
+		},
+		{
+			title: "Товар 5",
+			price: 100,
+			count: 2
+		}
+	]
+	function countBasketPrice(basket) {
+		var s = 0;
+		for(var item of basket){
+			s += item.price * item.count;
+		}
+		return(s);
+	}
+
+	alert(countBasketPrice(goods));
+
+// 4. * Вывести с помощью цикла for числа от 0 до 9, не используя тело цикла. Выглядеть это должно так:
+	for(var i = 0; i < 10; console.log(i++));
+
+//5. * Нарисовать пирамиду с 20 рядами с помощью console.log, как показано на рисунке:
+	var a = "";
+	for(var i = 0; i < 20; i++){
+		console.log(a += "x");
+	}
+
+
+	//Альтернатива заданиям 2 и 3
+
+	// выводим таблицу с элементами
+	function tableBilding(option,arrProduct){
+		var td = 3, tr = Math.ceil(arrProduct.length / td);
+		var count = arrProduct.length;
+		var cell = 0;
+		var table = "<table border='1' id='tableProduct'>";
+		for(var i = 1; i <= tr; i++){
+			table +="<tr>";
+				for(var j = 1; j <= td; j++){
+					if(cell < count){
+						table +="<td>" + arrProduct[cell][0] + "<br>Стоимость: " + arrProduct[cell][1] + "<br>Сейчас в корзине: " + arrProduct[cell][2] + "<br><a href='#' onclick='sumProductPrice(" + cell + ",arrGlobal,0)' id='button' >Добавить в корзину</a>" + "</td>";
+					}
+					cell++;
+				}
+			table +="</tr>";
+		}
+		var basketPrise = 0;
+		for(var i = 0; i < arrProduct.length; i++){
+			basketPrise += arrProduct[i][1] * arrProduct[i][2];
+		}
+		table += "<tr><td>Всего в корзине на " + basketPrise + " денег</td>";
+		if(option < 1){
+			table += "<td><a href='#' onclick='tableProduct.remove(),basketOutput()' id='buttonBasket'>Перейти в корзину</a></td>";
+		}else if(option >= 1){
+			table += "<td><a href='#' onclick='tableProduct.remove(), tableBilding(0, arrGlobal)' id='buttonBasket'>Вернуться к выбору</a></td>";
+		}
+		table += "</table>";
+		document.write(table);
+	}
+
+	//После нажатия "добавить в корзину" вводим количество товара в указанной ячейке массива   удаляем таблицу и вызываем фцнкцию вывода таблицы для обновления
+	function sumProductPrice(n, arrProduct, a){
+		var count = prompt("Введите количество:");
+		arrProduct[n][2] += 1 * count;
+		tableProduct.remove();
+		tableBilding(a, arrProduct);
+	}
+
+	//Генерируем освной массив
+	function goodsGenerate(x){
+		var arrGenerate = [];
+		for(var i = 0; i < x; i++){			
+			arrGenerate.push(elemGenerate(i));
+		}
+		return(arrGenerate);
+	}
+	
+	//генерируем элементы массива
+	function elemGenerate(n){
+		var protuctRandom = [0, 0, 0];
+			protuctRandom[0] = "Товар №" + (n + 1);
+			protuctRandom[1] = parseInt(Math.random() * 100);
+			protuctRandom[2] = 0;
+			return(protuctRandom)
+	}
+
+//Выбираем элементы массива с ненулевым количеством
+	function basketOutput(){
+		var	countElem = 0;
+		var basketArr = [];
+		for(i = 0; i < randomGoods.length; i++){
+			if(randomGoods[i][2] > 0){
+				basketArr[countElem] = randomGoods[i];
+				countElem++;
+			}
+		}
+		console.log(basketArr);
+		if(countElem > 0){
+			tableBilding(countElem,basketArr);
+		}else{
+			alert("Корзина пуста");
+		}
+	}
+
+	//запрашиваем размер таблицы
+	var quantityProd = prompt("Введите количество товара: ");
+
+
+	var arrGlobal = randomGoods = goodsGenerate(quantityProd);
+	tableBilding(0, randomGoods);
+
+	console.log(randomGoods);
+
+</script>
