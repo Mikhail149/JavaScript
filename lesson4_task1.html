@@ -1,0 +1,61 @@
+<script type="text/javascript">
+
+
+//1. Написать функцию, преобразующую число в объект. Передавая на вход число 
+//	от 0 до 999, мы должны получить на выходе объект, в котором в соответствующих 
+//	свойствах описаны единицы, десятки и сотни. Например, для числа 245 мы должны 
+//	получить следующий объект: {‘единицы’: 5, ‘десятки’: 4, ‘сотни’: 2}. Если число 
+//	превышает 999, необходимо выдать соответствующее сообщение с помощью console.log 
+//	и вернуть пустой объект.
+
+	var number = prompt("Введите число от 0 до 999");
+		console.log(number);
+		var digitObj = decomposedNumber(number);
+		console.log(digitObj);
+
+
+	function decomposedNumber(n){
+			var obj = {};
+		if(n < 0 || n > 999 || isNaN(n)){
+			obj.correct = "Вы ввели не корректное значение";
+			return (obj);
+		}
+		switch(n.length){
+			case 3:
+				obj["Сотни"] = n[n.length - 3];
+			case 2:
+				obj["Десятки"] = n[n.length - 2];
+			case 1:
+				obj["Единицы"] = n[n.length - 1];
+			default:
+				return(obj);
+		}
+	} 
+
+
+//другой вариант решения, сложный.
+
+	var number2 = prompt("Введите число от 0 до 999");
+		console.log(number2);
+		var digitObj2 = dis(number2);
+		console.log(digitObj2);
+
+
+			function dis(x) {
+				var n = x.length, a, b, count = 1;
+				var c = {};
+			if(x < 0 || x > 999 || isNaN(x)){
+				c.correct = "Вы ввели не корректное значение";
+				return (c);
+			}			
+				for(var i = 0; i < n; i++){
+					a = x % 10;
+					x = parseInt(x / 10);
+					c["Bit units " + count] = a;
+					count *= 10;
+				}
+			return(c);
+			}
+
+
+</script>
