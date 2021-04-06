@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    text-align: center;
+    margin: 0 auto;
+    width: 800px;
+}
+
+.chess {
+	align-content: center;	
+    padding: 20px;
+
+}
+
+.chesstTd {
+	width: 60px;
+	height: 60px;
+    border: 1px solid black;	
+}
+
+.sideCells {
+	width: 40px;
+}
+
+.rotate {
+	transform: rotate(180deg);
+}
+
+.text {
+    text-align: center;
+	font-size: 30px;	
+}
+
+.black {
+	background-color: gray;
+}
+
+table {
+    margin: 0 auto;	
+    border: 2px solid black;
+}
+
+.highlighting {
+	background-color: green;
+}
