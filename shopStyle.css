@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+td {
+    width: 150px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.cardBox {
+    display: flex;
+    justify-content: space-between;
+    width: 860px;
+    padding: 10px;
+}
+
+.cards {
+    display: flex;
+    justify-content: space-around;
+    width: 800px;
+}
+
+.pointer {
+    width: 30px;
+    border: 1px solid black;
+}
+
+.card {
+    width: 200px
+}
+
+
+.invisible {
+    display: none;
+}
+
+.description {
+    max-height: 50px;
+    overflow: auto;
+}
+
+.imgBig {
+    width: 300px;
+}
+
+.bigImgBlocNone {
+    display: flex;
+    justify-content: space-between;
+    width: 360px;
+    height: 300px;
+    display: none;
+}
+
+.bigImgBloc {
+    display: flex;
+    justify-content: space-between;
+    width: 360px;
+    height: 300px;
+}
