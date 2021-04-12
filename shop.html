@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>shop</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+    <script src="dataShop.js" defer></script>
+    <script src="shopCode.js" defer></script>
+</head>
+<body onload="init() ">
+
+	<div class="container">
+
+	<div class="content">
+		<div id="basket" class="basket">
+			<p>Корзина</p>
+			<div class="sumPrice">Общая стоимость товаров в корзине: 0</div>
+		</div>
+		<div class="cardBox">
+			<div onclick="step()" id="back" class="pointer"><</div>
+			<div id="cards" class="cards"></div>
+			<div onclick="step()" id="forward" class="pointer">></div>
+		</div>
+		<div class="bigImgBlocNone">
+			<div onclick="f2()" id="imgBack" class="pointer"><</div>
+			<div id="forBigImg"></div>
+			<div onclick="f2()" id="imgForward" class="pointer">></div>
+		</div>
+	</div>
+
+	</div>
+
+</body>
+</html>
