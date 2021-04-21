@@ -1,0 +1,35 @@
+<script type="text/javascript">
+
+//Undefined если в объекте window нет элемента а, то объявляем а, и присваиваем единицу
+if (!("a" in window)) {
+    var a = 1;
+}
+alert(a);
+
+//Undefined т.к. а не определена
+var b = function a(x) {
+    x && a(--x);
+};
+alert(a);
+
+//Буте выведена функция а, так как в alert нет вызова функции
+function a(x) {
+    return x * 2;
+}
+var a;
+alert(a);
+
+//Будет выведено число 10. Берется массив аргументов и третьему его элементу присваивается значение 10, а затем выводится а, она и является третьим аргументом
+function b(x, y, a) {
+    arguments[2] = 10;
+    alert(a);
+}
+b(1, 2, 3);
+
+//будет выведен объект null.
+function a() {
+    alert(this);
+}
+a.call(null);
+
+</script>
